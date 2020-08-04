@@ -1,0 +1,212 @@
+// GameTime3
+// Structures are beautiful
+
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+// ******************************************
+//                CONSTANTS                 *
+//                                          *
+// ******************************************
+const int MAXHP = 1000;
+const int MINHP = 1;
+const int MAXMP = 1000;
+const int MINMP = 1;
+
+// ******************************************
+//                STRUCTURES                *
+//                                          *
+// ******************************************
+
+// ITEM ATTRIBUTES
+// ******************************************
+struct Loot
+{
+
+};
+
+// CHARACTER ATTRIBUTES
+// ******************************************
+
+struct Creature
+{
+    string name;
+    string introduction;
+    int hp, mp, physAtt, magAtt, mpDrain;
+    int minmel = physAtt / 2;
+    int minmag = magAtt / 2;
+    string weapon;
+    string attackStringA;
+    string attackStringB;
+    string defendStringA;
+    string defendStringB;
+    Loot items;
+};
+
+// ENEMY ATTRIBUTES
+// ******************************************
+
+
+// ******************************************
+//                FUNCTION                  *
+//               PROTOTYPES                 *
+// ******************************************
+
+// Monsters
+// ******************************************
+
+Creature monsterList(int);
+
+// Levels
+// ******************************************
+void levelZero(Creature&);
+void levelOne(Creature&);
+
+
+// BATTLE FUNCTIONS
+// ******************************************
+
+void basicBattle(const Creature, Creature);
+
+// TEXT FUNCTIONS
+// ******************************************
+
+
+
+// ******************************************
+// ******************************************
+// ******************************************
+//                  MAIN                    *
+//                                          *
+// ******************************************
+// ******************************************
+// ******************************************
+
+int main()
+{
+    Creature hero;
+
+    levelZero(hero);
+
+    cout << "Are you ready to enter the first room?\n";
+    system("pause");
+    cout << endl;
+
+    levelOne(hero);
+
+}
+
+// ******************************************
+//                FUNCTIONS                 *
+//                                          *
+// ******************************************
+
+// Levels
+// ******************************************
+
+void levelZero(Creature &hero)
+{
+    // toolkit variables
+    int selection; // for player options
+
+    cout << "Welcome to GameTime 3!\n";
+    cout << "What is your name hero? ";
+    cin >> hero.name;
+    cout << endl;
+
+    cout << "Welcome " << hero.name << ". The rooms ahead are dangerous.\n";
+    cout << "You are given a sword and a staff, which feels most natural?\n";
+    cout << "Enter a number:\n";
+    cout << "1: Sword\n";
+    cout << "2: Staff\n";
+    cin >> selection;
+    cout << endl;
+
+    do
+    {
+        if (selection == 1)
+        {
+            hero.hp = 100;
+            hero.mp = 60;
+            hero.physAtt = 20;
+            hero.magAtt = 10;
+            hero.mpDrain = 20;
+            hero.attackStringA = "You swing your sword\n";
+            hero.attackStringB = "You send a fireball hurling toward the enemy\n";
+
+            cout << "It looks like you have the makings of a great warrior.\n";
+            cout << endl;
+        }
+        else if (selection == 2)
+        {
+            hero.hp = 80;
+            hero.mp = 100;
+            hero.physAtt = 20;
+            hero.magAtt = 20;
+            hero.mpDrain = 20;
+            hero.attackStringA = "You swing your sword\n";
+            hero.attackStringB = "You send a fireball hurling toward the enemy\n";
+
+            cout << "It looks like you have the makings of a powerful mage.\n";
+            cout << endl;
+        }
+        else
+            cout << "Unfortunately that weapon is not available.";
+    } while (selection != 1 && selection != 2);
+}
+
+// Monsters
+// ******************************************
+
+Creature monsterList(int)
+{
+    // Level 1 Monsters
+    Creature slime{};       // Monster 1
+    Creature warewolf{};   // Monster 2
+    Creature drake{};       // Monster 3
+    Creature mimic{};       // Monster 4
+    Creature swarm{};       // Monster 5
+    Creature undead{};      // Monster 6
+    Creature rodent{};      // Monster 7
+
+    // Level 5 Monsters
+
+    // Level 10 Monsters
+}
+
+// Levels
+// ******************************************
+
+void levelOne(Creature &hero)
+{
+    Creature warebeast;
+    warebeast.hp = 100;
+    warebeast.mp = 0;
+    warebeast.physAtt = 20;
+    warebeast.magAtt = 20;
+    warebeast.mpDrain = 20;
+    warebeast.attackStringA = "You swing your sword\n";
+    warebeast.attackStringB = "You send a fireball hurling toward the enemy\n";
+
+    cout << "You enter the first room, and peering into the darkness you see a shape\n";
+    cout << " in the center of the room.  Wearily you inspect the form before you.\n";
+    system("pause");
+    cout << "You hear a shuffle, a scratch and then a high pitched growl.  You ready your sword for battle!\n";
+
+    do
+        basicBattle(hero, &warebeast);
+    while (warebeast.hp > 0);
+}
+// BATTLE FUNCTIONS
+// ******************************************
+
+void basicBattle(const Creature, Creature)
+{
+
+
+}
+
+// TEXT FUNCTIONS
+// ******************************************
